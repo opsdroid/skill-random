@@ -8,6 +8,33 @@ COIN_FLIP_RESPONSES = [
     "It's {result}"
 ]
 
+MAGIC_EIGHT_BALL_RESPONSES = [
+    "It is certain",
+    "Without a doubt",
+    "You may rely on it",
+    "Yes definitely",
+    "It is decidedly so",
+    "As I see it, yes",
+    "Most likely",
+    "Yes",
+    "Outlook good",
+    "Signs point to yes",
+    "Reply hazy try again",
+    "Better not tell you now",
+    "Ask again later",
+    "Cannot predict now",
+    "Concentrate and ask again",
+    "Don’t count on it",
+    "Outlook not so good",
+    "My sources say no",
+    "Very doubtful",
+    "My reply is no"
+]
+
+@match_regex(r'magic 8 ?ball', case_sensitive=False)
+async def magic_8_ball(opsdroid, config, message):
+    await message.respond(choice(MAGIC_EIGHT_BALL_RESPONSES))
+
 @match_regex(r'roll a dic?e', case_sensitive=False)
 async def roll_die(opsdroid, config, message):
     await message.respond("You rolled {}".format(roll("1d6").result))
